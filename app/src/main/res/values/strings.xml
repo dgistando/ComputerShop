@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ACM Store</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title"> ACM Computer Store</string>
+    <string name="nav_header_subtitle">The world is no longer the way that it used to be</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="new_Items">New Items</string>
+</resources>
