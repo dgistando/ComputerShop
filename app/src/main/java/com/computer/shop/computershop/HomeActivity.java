@@ -60,7 +60,7 @@ public class HomeActivity extends AppCompatActivity
 
     //Set IP address here for API
     ///////////////////////////////////////////////////////////////////////////////////
-    public static final String IP_ADDRESS = "10.0.0.23";
+    public static final String IP_ADDRESS = "10.34.66.233";
     ///////////////////////////////////////////////////////////////////////////////////
 
     private static String URL = "http://"+IP_ADDRESS+":5000/check";

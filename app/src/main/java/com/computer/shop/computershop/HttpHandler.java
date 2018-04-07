@@ -29,8 +29,11 @@ public class HttpHandler {
         String response = null;
 
         try{
+            //Takes the url Given from Home Activity
             URL url = new URL(URLRequest);
+            //Makes a post request
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            //Make a HTTP GET request given the connection was
             connection.setRequestMethod("GET");
 
             //Reading response

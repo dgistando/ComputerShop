@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,14 +56,25 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         //getDrawable(int) deprecated API level 21.
         //Used getDrawable(int,Theme) but no theme here
         //holder.imageView.setImageDrawable(mContext.getResources().getDrawable(product.getImage(), null));
-        int id = mContext.getResources().getIdentifier(product.getImage(), "drawable", mContext.getPackageName());
+        Log.e("ImageInfo", "Name: "+product.getImage());
 
-        holder.imageView.setImageDrawable(mContext.getResources().getDrawable(id));
+        String str = product.getImage();
+        if(Character.isDigit(str.charAt(0))){
+            str = "_"+str;
+        }
+
+        str = str.substring(0, str.length()-4);
+
+        //Not used. Supposed to be for dynamic images but didnt get the image time.
+        int imageResource = mContext.getResources().getIdentifier("drawable/"+str, null, mContext.getPackageName());
+
+        //holder.imageView.setImageDrawable(mContext.getResources().getDrawable(imageResource, null));
+        holder.imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_launcher_background));
 
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "clicked item: "+ product.getTitle(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(mContext, "clicked item: "+ product.getTitle(), Toast.LENGTH_LONG).show();
 
                 //Intent intent = ((HomeActivity) mContext).getIntent();
 

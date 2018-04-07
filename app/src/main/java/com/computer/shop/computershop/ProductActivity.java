@@ -65,7 +65,7 @@ public class ProductActivity extends AppCompatActivity{
                 else
                 Toast.makeText(getBaseContext(), arr[new Random().nextInt(arr.length)], Toast.LENGTH_SHORT).show();
 
-                //TODO PLAY BITCONNEEEEEEEEEEECT!!!!! ON HIGH VOLUME
+
                 /*if(clickCount == 100){
                     MediaPlayer mp = new MediaPlayer();
 
