@@ -15,6 +15,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+//DO NOT TOUCH THIS CLASS
+
 //This is supposed to hold you search history
 //These 2 will pop up when you get close to the word.
 //Realized this would take much more work than its worth. maybe later :(

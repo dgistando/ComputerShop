@@ -59,8 +59,9 @@ public class HomeActivity extends AppCompatActivity
     // http://api.openweathermap.org/data/2.5/forecast?appid=4f2b6b91dbd0fbce7c5ffa1680b750cb&q=Merced,us;
 
     //Set IP address here for API
+    //TODO Change ip address to your own
     ///////////////////////////////////////////////////////////////////////////////////
-    public static final String IP_ADDRESS = "10.34.66.233";
+    public static final String IP_ADDRESS = "";
     ///////////////////////////////////////////////////////////////////////////////////
 
     private static String URL = "http://"+IP_ADDRESS+":5000/check";
@@ -248,31 +249,15 @@ public class HomeActivity extends AppCompatActivity
 
         @Override
         protected Void doInBackground(Void... voids) {
-            HttpHandler httpHandler = new HttpHandler();
+            //TODO make http request using the handler HttpHandler
 
-            String jsonResponse = httpHandler.makeServiceCall(URL);
-            //String jsonResponse = makeRequest(URL);
+            //TODO gather json response
 
-            Log.e(tag, "Response Request: " + jsonResponse);
-
-            if(jsonResponse != null)
+            //TODO parse json object from API
+            if(?? != null)
                 try{
 
-                    JSONArray products = new JSONArray(jsonResponse);
 
-                    for(int i=0 ; i<products.length(); i++){
-                        JSONObject p = products.getJSONObject(i);
-
-                        //Actually adding things to list
-                        productList.add(new Product(
-                                p.getInt("id"),
-                                p.getString("title"),
-                                p.getString("desc"),
-                                p.getDouble("rating"),
-                                p.getDouble("price"),
-                                //p.getInt("image")
-                                p.getString("image")
-                        ));
 
                     }
                 }catch (final JSONException e){
@@ -308,7 +293,7 @@ public class HomeActivity extends AppCompatActivity
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
 
-            //TODO get rid of progress bar if still shown
+            //TODO make loading bars invisible
             if(progressBar.isShown()){
                 progressBar.setVisibility(View.INVISIBLE);
                 getting.setVisibility(View.INVISIBLE);
