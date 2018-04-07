@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity
     //private static String URL = "http://api.openweathermap.org/data/2.5/forecast?appid=4f2b6b91dbd0fbce7c5ffa1680b750cb&q=Merced,us";
 
 
-    private static String URL = "http://10.0.0.23:5000/check";
+    private static String URL = "http://10.0.0.79:5000/check";
 
 
     @Override
