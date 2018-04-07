@@ -1,0 +1,17 @@
+﻿id,title,desc,rating,price,category,image
+1,Intel Core i7 8700K,6 Core Processor with Hyperthreading,4,350,2,i78700k.jpg
+2,AMD Threadripper 1950X,16 Core Processor with Hyperthreading,4,900,2,1950x.jpg
+3,Asus Z370-A,Z370 Motherboard with many features,5,200,1,z370a.jpg
+4,Asus Crosshair VI,AM4 Motherboard with many fratures,5,200,1,crosshairiv.jpg
+5,G.Skill Trident Z,DDR4 RAM with RGB,4,200,4,tridentz.jpg
+6,Corsair Vengeance RGB,DDR4 RAM with RGB,5,200,4,vengeancergb.jpg
+7,Corsair 900D,Really big case,5,300,5,900d.jpg
+8,NZXT H440,Slightly less big case,5,120,5,h440.jpg
+9,Cooler Master Hyper 212 Evo,Budget Heatsink,5,30,3,212master.jpg
+10,Corsair H60,Liquid Cooler,4,60,3,60h.jpg
+11,HGST He10 10TB,10TB Hard Drive,4,200,6,he10.jpg
+12,Samsung 840 Evo 1GB,1TB SSD,5,200,6,840evo.jpg
+13,Nvidia GTX 1080 Ti,Cryptocurrency Miner,2,1000,7,gtx1080ti
+14,AMD RX580,Cryptocurrency Miner,1,500,7,rx580.jpg
+15,Corsair SF450,Tiny Power Supply,4,70,8,sf450.jpg
+16,EVGA Supernova 1200W,Huge Power Supply,4,200,8,supernova1200.jpg
