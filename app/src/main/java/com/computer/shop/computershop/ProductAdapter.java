@@ -40,7 +40,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         //getDrawable(int) deprecated API level 21.
         //Used getDrawable(int,Theme) but no theme here
-        holder.imageView.setImageDrawable(mContext.getResources().getDrawable(product.getImage(), null));
+        //holder.imageView.setImageDrawable(mContext.getResources().getDrawable(product.getImage(), null));
+        holder.imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_launcher_background));
     }
 
     @Override

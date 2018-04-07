@@ -45,19 +45,19 @@ public class HomeActivity extends AppCompatActivity
     RecyclerView recyclerView;
     ProductAdapter adapter;
     FloatingSearchView mSearchView;
-    //TextView getting;
+    TextView getting;
 
     public static final long FIND_SUGGESTION_SIMULATED_DELAY = 250;
 
-    List<Product> productList;
+    public List<Product> productList;
 
     private ProgressBar progressBar;
 
 
-    private static String URL = "http://api.openweathermap.org/data/2.5/forecast?appid=4f2b6b91dbd0fbce7c5ffa1680b750cb&q=Merced,us";
+    //private static String URL = "http://api.openweathermap.org/data/2.5/forecast?appid=4f2b6b91dbd0fbce7c5ffa1680b750cb&q=Merced,us";
 
 
-    //private static String URL = "http://127.0.0.1:5000/check";
+    private static String URL = "http://10.0.0.23:5000/check";
 
 
     @Override
@@ -71,7 +71,7 @@ public class HomeActivity extends AppCompatActivity
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         mSearchView = (FloatingSearchView) findViewById(R.id.floating_search_view);
-        //getting = (TextView)findViewById(R.id.loadingEventText);
+        getting = (TextView)findViewById(R.id.loadingEventText);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -166,17 +166,27 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.categories) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.graphicsCard) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.cpu) {
+
+        } else if (id == R.id.cooler) {
+
+        } else if (id == R.id.cayse) {
+
+        } else if (id == R.id.motherboard) {
+
+        } else if (id == R.id.memory) {
+
+        } else if (id == R.id.cooler) {
 
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+
 
         }
 
@@ -207,17 +217,18 @@ public class HomeActivity extends AppCompatActivity
         protected Void doInBackground(Void... voids) {
             HttpHandler httpHandler = new HttpHandler();
 
-            //String jsonResponse = httpHandler.makeServiceCall(URL);
-            String jsonResponse = makeRequest(URL);
+            String jsonResponse = httpHandler.makeServiceCall(URL);
+            //String jsonResponse = makeRequest(URL);
 
             Log.e(tag, "Response Request: " + jsonResponse);
 
             if(jsonResponse != null)
                 try{
-                    JSONObject jsonObject = new JSONObject(jsonResponse);
+                    //Should probably be an array. Thats first level
+                    //JSONObject jsonObject = new JSONObject(jsonResponse);
+                    JSONArray products = new JSONArray(jsonResponse);
 
-                    JSONArray products = jsonObject.getJSONArray("contacts");
-
+                    //JSONArray products = jsonObject.getJSONArray(jsonResponse);
                     for(int i=0 ; i<products.length(); i++){
                         JSONObject p = products.getJSONObject(i);
 
@@ -231,6 +242,7 @@ public class HomeActivity extends AppCompatActivity
                                 //p.getInt("image")
                                 1
                         ));
+                        Log.d("JSONLoop", "First Product title: " +productList.get(0).getTitle());
 
                     }
                 }catch (final JSONException e){
@@ -269,7 +281,7 @@ public class HomeActivity extends AppCompatActivity
             //TODO get rid of progress bar if still shown
             if(progressBar.isShown()){
                 progressBar.setVisibility(View.INVISIBLE);
-                //getting
+                getting.setVisibility(View.INVISIBLE);
             }
 
             adapter = new ProductAdapter(HomeActivity.this, productList);

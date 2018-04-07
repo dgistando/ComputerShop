@@ -4,18 +4,48 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+        <item android:title="Categories"
+            android:icon="@drawable/ic_menu_categories"
+            android:id="@+id/categories"
+            >
+            <menu>
+                <item
+                   android:icon="@drawable/graphics_cards"
+                    android:title="Graphics Card"
+                    android:id="@+id/graphicsCard"
+                    />
+                <item
+                    android:title="CPU Cooler"
+                    android:id="@+id/cooler"
+                    />
+                <item
+                    android:title="CPU"
+                    android:id="@+id/cpu"
+                    />
+                <item
+                    android:title="Case"
+                    android:id="@+id/cayse"
+                    />
+                <item
+                    android:title="Motherboard"
+                    android:id="@+id/motherboard"
+                    />
+                <item
+                    android:title="Memory"
+                    android:id="@+id/memory"
+                    />
+                <item
+                    android:title="Storage"
+                    android:id="@+id/storage"
+                    />
+                <item
+                    android:title="Power Supply"
+                    android:id="@+id/ups"
+                    />
+            </menu>
+
+        </item>
+
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
@@ -28,10 +58,6 @@
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
         </menu>
     </item>
 
