@@ -54,10 +54,10 @@ public class HomeActivity extends AppCompatActivity
     private ProgressBar progressBar;
 
 
-    private static String URL = "http://api.openweathermap.org/data/2.5/forecast?appid=4f2b6b91dbd0fbce7c5ffa1680b750cb&q=Merced,us";
+    //private static String URL = "http://api.openweathermap.org/data/2.5/forecast?appid=4f2b6b91dbd0fbce7c5ffa1680b750cb&q=Merced,us";
 
 
-    //private static String URL = "http://127.0.0.1:5000/check";
+    private static String URL = "http://10.0.75.1:5000/check";
 
 
     @Override
@@ -207,8 +207,8 @@ public class HomeActivity extends AppCompatActivity
         protected Void doInBackground(Void... voids) {
             HttpHandler httpHandler = new HttpHandler();
 
-            //String jsonResponse = httpHandler.makeServiceCall(URL);
-            String jsonResponse = makeRequest(URL);
+            String jsonResponse = httpHandler.makeServiceCall(URL);
+            //String jsonResponse = makeRequest(URL);
 
             Log.e(tag, "Response Request: " + jsonResponse);
 
@@ -216,14 +216,15 @@ public class HomeActivity extends AppCompatActivity
                 try{
                     JSONObject jsonObject = new JSONObject(jsonResponse);
 
-                    JSONArray products = jsonObject.getJSONArray("contacts");
+                    JSONArray products = jsonObject.getJSONArray(jsonResponse);
 
                     for(int i=0 ; i<products.length(); i++){
                         JSONObject p = products.getJSONObject(i);
 
                         //Actually adding things to list
                         productList.add(new Product(
-                                p.getInt("id"),
+                                //p.getInt("id"),
+                                1,
                                 p.getString("title"),
                                 p.getString("desc"),
                                 p.getDouble("rating"),
@@ -231,6 +232,7 @@ public class HomeActivity extends AppCompatActivity
                                 //p.getInt("image")
                                 1
                         ));
+                        Log.d("JSONLoop", "First Product title: " +productList.get(0).getTitle());
 
                     }
                 }catch (final JSONException e){

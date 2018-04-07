@@ -25,8 +25,7 @@ public class HttpHandler {
     public HttpHandler(){ }
 
     public String makeServiceCall(String URLRequest){
-
-       /* String response = null;
+        String response = null;
 
         try{
             URL url = new URL(URLRequest);
@@ -49,12 +48,11 @@ public class HttpHandler {
             Log.e(TAG, "Exception: " + e.getMessage());
         }
 
-        return response;*/
-       return "";
+        return response;
     }
 
     private String convertStreamToString(InputStream is){
-        /*BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
 
         String line;
@@ -72,8 +70,7 @@ public class HttpHandler {
                 e.printStackTrace();
             }
         }
-        return sb.toString();*/
-        return "";
+        return sb.toString();
     }
 
 }
