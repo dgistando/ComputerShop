@@ -271,7 +271,7 @@ public class HomeActivity extends AppCompatActivity
                                 p.getDouble("rating"),
                                 p.getDouble("price"),
                                 //p.getInt("image")
-                                ""
+                                p.getString("image")
                         ));
 
                     }

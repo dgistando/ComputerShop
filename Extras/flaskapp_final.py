@@ -49,6 +49,7 @@ def check():
         curr['desc'] = row[2]
         curr['rating'] = row[3]
         curr['price'] = row[4]
+        curr['image'] = row[5]
         names.append(curr)
     
     return json.dumps(names)
