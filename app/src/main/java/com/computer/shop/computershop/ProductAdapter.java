@@ -14,6 +14,16 @@ import android.widget.Toast;
 
 import java.util.List;
 
+/**
+ * This class is used to help the Recycler view identify what a Product type
+ * is. It translates the parts of a product into something that can be displayed
+ * on a cardView card.
+ *
+ * check list_item_home.xml to see the CardView layout.
+ * I got it from androidHive.
+ */
+
+
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder>{
 
     private Context mContext;
@@ -40,7 +50,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.tvTitle.setText(product.getTitle());
         holder.tvDesc.setText(product.getDesc());
         holder.tvRating.setText(String.valueOf(product.getRating()));
-        holder.tvPrice.setText(String.valueOf(product.getPrice()));
+        holder.tvPrice.setText("\u0243 "+String.valueOf(product.getPrice()));
 
         //getDrawable(int) deprecated API level 21.
         //Used getDrawable(int,Theme) but no theme here

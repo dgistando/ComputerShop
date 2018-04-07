@@ -49,19 +49,21 @@ public class HomeActivity extends AppCompatActivity
     RecyclerView recyclerView;
     ProductAdapter adapter;
     FloatingSearchView mSearchView;
-    TextView getting;
+    TextView getting, newItems;
 
     public static final long FIND_SUGGESTION_SIMULATED_DELAY = 250;
-
     public List<Product> productList;
-
     private ProgressBar progressBar;
 
+    //Example of a more common api request. Try it out in a browser.
+    // http://api.openweathermap.org/data/2.5/forecast?appid=4f2b6b91dbd0fbce7c5ffa1680b750cb&q=Merced,us;
 
-    //private static String URL = "http://api.openweathermap.org/data/2.5/forecast?appid=4f2b6b91dbd0fbce7c5ffa1680b750cb&q=Merced,us";
+    //Set IP address here for API
+    ///////////////////////////////////////////////////////////////////////////////////
+    public static final String IP_ADDRESS = "10.0.0.23";
+    ///////////////////////////////////////////////////////////////////////////////////
 
-
-    private static String URL = "http://10.0.0.23:5000/check";
+    private static String URL = "http://"+IP_ADDRESS+":5000/check";
 
 
     @Override
@@ -78,6 +80,7 @@ public class HomeActivity extends AppCompatActivity
 
         mSearchView = (FloatingSearchView) findViewById(R.id.floating_search_view);
         getting = (TextView)findViewById(R.id.loadingEventText);
+        newItems = (TextView)findViewById(R.id.NewItems);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -175,30 +178,50 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        if(productList.size() > 0)productList.clear();
+        adapter.notifyDataSetChanged();
+
         if (id == R.id.categories) {
-            // Handle the camera action
+            // does nothing
         } else if (id == R.id.graphicsCard) {
+
+            URL = "http://"+IP_ADDRESS+":5000/catSelect?id=7";
+            newItems.setText("Video Cards");
 
         } else if (id == R.id.cpu) {
 
+            URL = "http://"+IP_ADDRESS+":5000/catSelect?id=2";
+            newItems.setText("CPU");
         } else if (id == R.id.cooler) {
 
+            URL = "http://"+IP_ADDRESS+":5000/catSelect?id=3";
+            newItems.setText("Cooling");
         } else if (id == R.id.cayse) {
 
+            URL = "http://"+IP_ADDRESS+":5000/catSelect?id=5";
+            newItems.setText("Cases");
         } else if (id == R.id.motherboard) {
 
+            URL = "http://"+IP_ADDRESS+":5000/catSelect?id=1";
+            newItems.setText("Motherboard");
         } else if (id == R.id.memory) {
 
-        } else if (id == R.id.cooler) {
+            URL = "http://"+IP_ADDRESS+":5000/catSelect?id=4";
+            newItems.setText("Memory");
+        } else if (id == R.id.storage) {
 
-        } else if (id == R.id.nav_manage) {
+            URL = "http://"+IP_ADDRESS+":5000/catSelect?id=6";
+            newItems.setText("Storage");
+        } else if (id == R.id.ups) {
 
+            URL = "http://"+IP_ADDRESS+":5000/catSelect?id=8";
+            newItems.setText("Power Supply");
         } else if (id == R.id.nav_share) {
-
 
 
         }
 
+        new GetProducts().execute();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -299,6 +322,17 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
+    /**
+     *
+     *  This method is an example of a method that does
+     *  not use the HTTPurlConnection type directly.
+     *  It's much more simplified.
+     *
+     *  https://github.com/google/volley
+     *
+     * @param URLRequest
+     * @return
+     */
     public String makeRequest(String URLRequest){
         StringBuilder sb;
 
@@ -306,8 +340,7 @@ public class HomeActivity extends AppCompatActivity
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //Log.d("RESPONSE", response);
-                        //sb.append(response);
+                        //Pares JSON response here!
                     }
                 }, new Response.ErrorListener() {
             @Override

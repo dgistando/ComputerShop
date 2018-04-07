@@ -15,30 +15,37 @@
                     android:id="@+id/graphicsCard"
                     />
                 <item
+                    android:icon="@drawable/cooler_icon"
                     android:title="CPU Cooler"
                     android:id="@+id/cooler"
                     />
                 <item
+                    android:icon="@drawable/cpu_icon"
                     android:title="CPU"
                     android:id="@+id/cpu"
                     />
                 <item
+                    android:icon="@drawable/cases"
                     android:title="Case"
                     android:id="@+id/cayse"
                     />
                 <item
+                    android:icon="@drawable/motherboard_icon"
                     android:title="Motherboard"
                     android:id="@+id/motherboard"
                     />
                 <item
+                    android:icon="@drawable/memory_icon"
                     android:title="Memory"
                     android:id="@+id/memory"
                     />
                 <item
+                    android:icon="@drawable/storage_icon"
                     android:title="Storage"
                     android:id="@+id/storage"
                     />
                 <item
+                    android:icon="@drawable/ups_icon"
                     android:title="Power Supply"
                     android:id="@+id/ups"
                     />
