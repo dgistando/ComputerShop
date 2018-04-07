@@ -1,5 +1,7 @@
 package com.computer.shop.computershop;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SearchRecentSuggestionsProvider;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,6 +12,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.ListPopupWindow;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -57,7 +61,7 @@ public class HomeActivity extends AppCompatActivity
     //private static String URL = "http://api.openweathermap.org/data/2.5/forecast?appid=4f2b6b91dbd0fbce7c5ffa1680b750cb&q=Merced,us";
 
 
-    private static String URL = "http://10.0.0.79:5000/check";
+    private static String URL = "http://10.0.0.23:5000/check";
 
 
     @Override
@@ -70,12 +74,15 @@ public class HomeActivity extends AppCompatActivity
         productList = new ArrayList<>();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         mSearchView = (FloatingSearchView) findViewById(R.id.floating_search_view);
         getting = (TextView)findViewById(R.id.loadingEventText);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         new GetProducts().execute();
+
 
         /////////////////////////////////////////////////////////////////////
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -86,6 +93,7 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
 
         mSearchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
             @Override
@@ -125,6 +133,7 @@ public class HomeActivity extends AppCompatActivity
             }
 
         });
+
 
     }
 
@@ -240,7 +249,7 @@ public class HomeActivity extends AppCompatActivity
                                 p.getDouble("rating"),
                                 p.getDouble("price"),
                                 //p.getInt("image")
-                                1
+                                ""
                         ));
                         Log.d("JSONLoop", "First Product title: " +productList.get(0).getTitle());
 
@@ -311,5 +320,6 @@ public class HomeActivity extends AppCompatActivity
         Volley.newRequestQueue(HomeActivity.this).add(stringRequest);
         return "";
     }
+
 
 }

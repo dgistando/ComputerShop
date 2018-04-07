@@ -11,11 +11,11 @@ public class Product implements SearchSuggestion {
     private String desc;
     private double rating;
     private double price;
-    private int image;
+    private String image;
 
     private boolean mIsHistory;
 
-    public Product(int id, String title, String desc, double rating, double price, int image) {
+    public Product(int id, String title, String desc, double rating, double price, String image) {
         this.id = id;
         this.title = title;
         this.desc = desc;
@@ -34,7 +34,7 @@ public class Product implements SearchSuggestion {
         this.desc = "";
         this.rating = 0.0;
         this.price = 0.0;
-        this.image = 0;
+        this.image = "";
     }
 
     public int getId() {
@@ -57,7 +57,7 @@ public class Product implements SearchSuggestion {
         return price;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 

@@ -35,23 +35,32 @@
             android:id="@+id/pv_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="Price"
             android:textColor="@color/black"
             android:textSize="30dp" />
 
+        <RatingBar
+            android:id="@+id/pv_rating"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:numStars="5"
+            android:rating="0.0"
+            android:stepSize="0.5" />
+        <!--
         <TextView
             android:id="@+id/pv_rating"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="Rating"
             android:textColor="@color/black"
             android:textSize="20dp" />
+            !-->
 
         <TextView
             android:id="@+id/pv_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="Description"
             android:textColor="@color/black"
             android:textSize="14dp" />
 
