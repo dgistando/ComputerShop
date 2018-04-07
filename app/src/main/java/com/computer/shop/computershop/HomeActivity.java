@@ -65,7 +65,7 @@ public class HomeActivity extends AppCompatActivity
 
     private static String URL = "http://"+IP_ADDRESS+":5000/check";
 
-
+    //Method where everything starts. The main for android.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,13 +77,14 @@ public class HomeActivity extends AppCompatActivity
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+                        //I know its redundant. bad habit.
         mSearchView = (FloatingSearchView) findViewById(R.id.floating_search_view);
         getting = (TextView)findViewById(R.id.loadingEventText);
         newItems = (TextView)findViewById(R.id.NewItems);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        //UI thread and HTTP GET task are split up here
         new GetProducts().execute();
 
 
@@ -97,7 +98,7 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
+        //This is fro the SearchBar at the top. Right now its none functional, but can be implemented easily
         mSearchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
             @Override
             public void onSearchTextChanged(String oldQuery, final String newQuery) {
@@ -256,11 +257,9 @@ public class HomeActivity extends AppCompatActivity
 
             if(jsonResponse != null)
                 try{
-                    //Should probably be an array. Thats first level
-                    //JSONObject jsonObject = new JSONObject(jsonResponse);
+
                     JSONArray products = new JSONArray(jsonResponse);
 
-                    //JSONArray products = jsonObject.getJSONArray(jsonResponse);
                     for(int i=0 ; i<products.length(); i++){
                         JSONObject p = products.getJSONObject(i);
 
@@ -274,7 +273,6 @@ public class HomeActivity extends AppCompatActivity
                                 //p.getInt("image")
                                 ""
                         ));
-                        Log.d("JSONLoop", "First Product title: " +productList.get(0).getTitle());
 
                     }
                 }catch (final JSONException e){

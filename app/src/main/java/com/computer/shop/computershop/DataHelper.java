@@ -15,18 +15,23 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+//This is supposed to hold you search history
+//These 2 will pop up when you get close to the word.
+//Realized this would take much more work than its worth. maybe later :(
 public class DataHelper {
-    private static final String COLORS_FILE_NAME = "colors.json";
+    private static final String Product_data_file = "products.json";
 
-    private static List<ProductWrapper> sColorWrappers = new ArrayList<>();
+    private static List<ProductWrapper> sProductWrapper = new ArrayList<>();
 
+    //This is supposed to hold you search history
+    //These 2 will pop up when you get close to the word.
     private static List<Product> sProductSuggest =
             new ArrayList<>(Arrays.asList(
                     new Product("Computer1"),
                     new Product("Computer2")
             ));
 
-    public interface OnFindColorsListener {
+    public interface OnFindProductListener {
         void onResults(List<ProductWrapper> results);
     }
 
@@ -109,7 +114,7 @@ public class DataHelper {
     }
 
 
-    public static void findColors(Context context, String query, final OnFindColorsListener listener) {
+    public static void findProducts(Context context, String query, final OnFindProductListener listener) {
         initColorWrapperList(context);
 
         new Filter() {
@@ -122,7 +127,7 @@ public class DataHelper {
 
                 if (!(constraint == null || constraint.length() == 0)) {
 
-                    for (ProductWrapper p : sColorWrappers) {
+                    for (ProductWrapper p : sProductWrapper) {
                         if (p.getTitle().toUpperCase()
                                 .startsWith(constraint.toString().toUpperCase())) {
 
@@ -153,9 +158,9 @@ public class DataHelper {
 
     private static void initColorWrapperList(Context context) {
 
-        if (sColorWrappers.isEmpty()) {
+        if (sProductWrapper.isEmpty()) {
             String jsonString = loadJson(context);
-            sColorWrappers = deserializeColors(jsonString);
+            sProductWrapper = deserializeProducts(jsonString);
         }
     }
 
@@ -183,7 +188,7 @@ public class DataHelper {
         return jsonString;
     }
 
-    private static List<ProductWrapper> deserializeColors(String jsonString) {
+    private static List<ProductWrapper> deserializeProducts(String jsonString) {
 
         Gson gson = new Gson();
 

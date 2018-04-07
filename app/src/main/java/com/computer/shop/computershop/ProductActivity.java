@@ -60,10 +60,10 @@ public class ProductActivity extends AppCompatActivity{
             public void onClick(View v) {
                 clickCount++;
 
-                if(clickCount == 20)Toast.makeText(getBaseContext(), "20 CLICKS!!!!!", Toast.LENGTH_LONG).show();
-                if(clickCount == 50)Toast.makeText(getBaseContext(), "50 CLICKS!!!!!", Toast.LENGTH_LONG).show();
+                if(clickCount == 20)Toast.makeText(getBaseContext(), "20 CLICKS!!!!!", Toast.LENGTH_SHORT).show();
+                if(clickCount == 50)Toast.makeText(getBaseContext(), "50 CLICKS!!!!!", Toast.LENGTH_SHORT).show();
                 else
-                Toast.makeText(getBaseContext(), arr[new Random().nextInt(arr.length)], Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), arr[new Random().nextInt(arr.length)], Toast.LENGTH_SHORT).show();
 
                 //TODO PLAY BITCONNEEEEEEEEEEECT!!!!! ON HIGH VOLUME
                 /*if(clickCount == 100){
